@@ -1,5 +1,6 @@
 import Layout from "./Layout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 const mockEmployees = [
   {
@@ -23,19 +24,21 @@ const mockEmployees = [
 ];
 
 const Home = () => {
-  const [employees, setEmployees] = useState();
+  const [employees, setEmployees] = useState([]);
   const [sector, setSector] = useState();
+
+  useEffect(() => setEmployees(mockEmployees), []);
 
   const displeySector = () => {
     if (sector === "admin") {
-      return <Admin />;
+      return <Admin employees={employees} setEmployees={setEmployees} />;
     } else if (sector === "user") {
-      return <User />;
+      return <User employees={employees} />;
     } else {
       return <div></div>;
     }
   };
-  // console.log(sector);
+
   return (
     <Layout>
       <div>
@@ -52,53 +55,106 @@ const Home = () => {
   );
 };
 
-const User = () => {
+const User = (props) => {
   return (
     <div>
       <table border="1">
-        <tr>
-          <td>Name</td>
-          <td>Last Name</td>
-          <td>Position</td>
-        </tr>
-        {mockEmployees.map((employee) => (
+        <thead>
           <tr>
-            <td>{employee.name}</td>
-            <td>{employee.lastname}</td>
-            <td>{employee.position}</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>Position</td>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {props.employees.map((employee) => (
+            <tr key={employee.id}>
+              <td>{employee.name}</td>
+              <td>{employee.lastname}</td>
+              <td>{employee.position}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );
 };
 
-const Admin = () => {
+const Admin = (props) => {
+  const { register, handleSubmit, setValue } = useForm();
+
+  const onSubmit = (registerData) => {
+    console.log(registerData);
+    props.setEmployees((currentEmp) => {
+      return [
+        ...currentEmp,
+        {
+          id: currentEmp.length,
+          name: registerData.name,
+          lastname: registerData.lastname,
+          position: registerData.position,
+        },
+      ];
+    });
+    setValue("name", "");
+    setValue("lastname", "");
+    setValue("position", "");
+
+    console.log("employees list: ", props.employees);
+  };
+
+  const handleRemoveEmployee = (empId) => {
+    props.setEmployees(props.employees.filter((emp) => emp.id !== empId));
+  };
+
   return (
     <div>
-      <div class="inputForm">
-        <form>
-          <input type="text" placeholder="Name" />
-          <input type="text" placeholder="Last Name" />
-          <input type="text" placeholder="Position" />
+      <div className="inputForm">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            type="text"
+            placeholder="Name"
+            {...register("name", { required: true })}
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            {...register("lastname", { required: true })}
+          />
+          <input
+            type="text"
+            placeholder="Position"
+            {...register("position", { required: true })}
+          />
+          <input type="submit" value="Save" />
         </form>
-        <button>Save</button>
       </div>
       <table border="1">
-        <tr>
-          <td>Name</td>
-          <td>Last Name</td>
-          <td>Position</td>
-          <td>Action</td>
-        </tr>
-        {mockEmployees.map((employee) => (
+        <thead>
           <tr>
-            <td>{employee.name}</td>
-            <td>{employee.lastname}</td>
-            <td>{employee.position}</td>
-            <td>Delete</td>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>Position</td>
+            <td>Action</td>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {props.employees.map((employee) => (
+            <tr key={employee.id}>
+              <td>{employee.name}</td>
+              <td>{employee.lastname}</td>
+              <td>{employee.position}</td>
+              <td>
+                <button
+                  id="deleteBtn"
+                  onClick={() => handleRemoveEmployee(employee.id)}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

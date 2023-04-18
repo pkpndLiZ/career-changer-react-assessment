@@ -1,4 +1,5 @@
 import Layout from "./Layout";
+import { useState } from "react";
 
 const mockEmployees = [
   {
@@ -22,6 +23,19 @@ const mockEmployees = [
 ];
 
 const Home = () => {
+  const [employees, setEmployees] = useState();
+  const [sector, setSector] = useState();
+
+  const displeySector = () => {
+    if (sector === "admin") {
+      return <Admin />;
+    } else if (sector === "user") {
+      return <User />;
+    } else {
+      return <div></div>;
+    }
+  };
+  // console.log(sector);
   return (
     <Layout>
       <div>
@@ -29,14 +43,11 @@ const Home = () => {
           Generation Thailand <br /> React - Assessment
         </h1>
         <div>
-          <button>User Home Sector</button>
-          <button>Admin Home Sector</button>
+          <button onClick={() => setSector("user")}>User Home Sector</button>
+          <button onClick={() => setSector("admin")}>Admin Home Sector</button>
         </div>
       </div>
-      {/* User component */}
-      <User />
-      {/* Admin Component */}
-      <Admin />
+      {displeySector()}
     </Layout>
   );
 };

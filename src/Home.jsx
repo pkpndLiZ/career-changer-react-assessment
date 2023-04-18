@@ -29,7 +29,7 @@ const Home = () => {
 
   useEffect(() => setEmployees(mockEmployees), []);
 
-  const displeySector = () => {
+  const displaySector = () => {
     if (sector === "admin") {
       return <Admin employees={employees} setEmployees={setEmployees} />;
     } else if (sector === "user") {
@@ -39,26 +39,37 @@ const Home = () => {
     }
   };
 
+  const displayTitle = () => {
+    if (sector === "admin") {
+      return "Home - Admin Sector";
+    } else if (sector === "user") {
+      return "Home - User Sector";
+    } else {
+      return "React - Assessment";
+    }
+  };
+
   return (
     <Layout>
-      <div>
-        <h1>
-          Generation Thailand <br /> React - Assessment
-        </h1>
-        <div>
+      <div className="home">
+        <div id="title">
+          <h1>Generation Thailand</h1>
+          <h1>{displayTitle()}</h1>
+        </div>
+        <div id="btn">
           <button onClick={() => setSector("user")}>User Home Sector</button>
           <button onClick={() => setSector("admin")}>Admin Home Sector</button>
         </div>
+        {displaySector()}
       </div>
-      {displeySector()}
     </Layout>
   );
 };
 
 const User = (props) => {
   return (
-    <div>
-      <table border="1">
+    <div className="user">
+      <table>
         <thead>
           <tr>
             <td>Name</td>
@@ -108,8 +119,9 @@ const Admin = (props) => {
   };
 
   return (
-    <div>
+    <div className="admin">
       <div className="inputForm">
+        <p>Create User Here</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
@@ -126,10 +138,12 @@ const Admin = (props) => {
             placeholder="Position"
             {...register("position", { required: true })}
           />
-          <input type="submit" value="Save" />
+          <button id="saveBtn" type="submit">
+            Save
+          </button>
         </form>
       </div>
-      <table border="1">
+      <table>
         <thead>
           <tr>
             <td>Name</td>

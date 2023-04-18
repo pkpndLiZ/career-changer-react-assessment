@@ -1,0 +1,217 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Luxurious+Roman&display=swap');
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    gap: 24px;
+    padding-right: 24px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    
+}
+nav a {
+    color: #000000;
+}
+nav a:hover {
+    color: rgb(39, 125, 201);
+}
+nav hr {
+    border-top: 3px solid #bbb;
+}
+
+.owner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Luxurious Roman', cursive;
+    background-color: #bbb;
+    padding-bottom: 30px;
+}
+
+.owner #bioTitle {
+    font-size: 18px;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    gap: 50px;
+    
+}
+
+.home #title {
+    line-height: 24px; 
+    text-align: center;
+}
+
+.home #btn {
+    display: flex;
+    gap: 80px;
+    
+    /* background-color: aquamarine; */
+}
+
+/* CSS */
+#btn button {
+    appearance: button;
+    background-color: #000;
+    background-image: none;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: ITCAvantGardeStd-Bk,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0 5px 10px 0;
+    overflow: visible;
+    padding: 12px 40px;
+    text-align: center;
+    text-transform: none;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  
+  #btn button:focus {
+    text-decoration: none;
+  }
+  
+  #btn button:hover {
+    text-decoration: none;
+  }
+  
+  #btn button:active {
+    box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+    outline: 0;
+  }
+  
+  #btn button:not([disabled]):active {
+    box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+    transform: translate(2px, 2px);
+  }
+  
+  @media (min-width: 768px) {
+    button #btn {
+      padding: 12px 50px;
+    }
+  }
+
+
+  table {
+    /* border-collapse: collapse; */
+    /* /* border-spacing: 0; */
+    /* border: 1px solid black;
+    border-spacing: 0;
+    border-collapse: separate;
+    border-radius: 10px; */
+
+    border-spacing: 0;
+    border-collapse: separate;
+    border-radius: 10px;
+    border: 1px solid black;
+  }
+
+  thead {
+	/* background-color: #524d4d; */
+	color: rgb(11, 8, 8);
+    font-weight: 900;
+	font-size: 0.865rem;
+	text-transform: uppercase;
+	letter-spacing: 2%;
+    text-align: center;
+}
+  
+  th, td {
+    padding: 15px;
+    text-align: center;
+  }
+
+#deleteBtn {
+    border: none;
+    outline: none;
+    color: red;
+   
+}
+
+#deleteBtn:hover{  
+    font-weight: 900;
+    color:rgb(208, 0, 0);    
+}
+
+.admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 45px;
+}
+
+.admin .inputForm p {
+   font-weight: 800;
+}
+
+.admin form {
+    display: flex;
+    gap: 20px;
+
+}
+
+
+
+/* CSS */
+#saveBtn {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+}
+
+#saveBtn:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+@media (min-width: 768px) {
+    #saveBtn {
+    padding: 0.25em 0.75em;
+  }
+}
+
+.admin form input {
+    top: 0;
+    left: 0;
+    width: 100%;
+    border: 2px solid #000;
+    outline: none;
+    background: none;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+}

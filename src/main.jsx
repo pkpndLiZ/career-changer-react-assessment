@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Home from "./Home";
 import Owner from "./Owner";
+import "./assets/style/index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 

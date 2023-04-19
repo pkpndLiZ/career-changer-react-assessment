@@ -17,6 +17,7 @@ nav ul {
 }
 nav a {
     color: #000000;
+    text-decoration: none;
 }
 nav a:hover {
     color: rgb(39, 125, 201);
@@ -44,7 +45,7 @@ nav hr {
     flex-direction: column;
     align-items: center;
     font-family: 'Inter', sans-serif;
-    gap: 50px;
+    gap: 45px;
     
 }
 
@@ -159,6 +160,7 @@ nav hr {
     flex-direction: column;
     align-items: center;
     gap: 45px;
+    padding-bottom: 30px;
 }
 
 .admin .inputForm p {

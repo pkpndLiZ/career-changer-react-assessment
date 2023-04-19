@@ -13,8 +13,10 @@ const Owner = () => {
         />
         <p id="bioTitle">Short Biography </p>
         <p>
-          "The surest sign that intelligent life exists elsewhere in the
-          universe is that it has never tried to contact us."
+          "My mother told me to follow my dreams, so I took a nap. (´〜｀*) zzz"
+        </p>
+        <p>
+          "You won’t feel sleepy at work, if you sleep at work. ( ु⁎ᴗᵨᴗ⁎)ु.zZ "
         </p>
         <p>
           (✿◠‿◠), ≧◉◡◉≦, ≧◠‿◠≦, （*^_^*） , ┑(￣▽￣)┍,≖‿≖, (◕‿◕) , ಥ‿ಥ , (●⌒∇⌒●)
